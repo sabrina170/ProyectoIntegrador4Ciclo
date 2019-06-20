@@ -44,6 +44,25 @@ private static final Logger logger = LoggerFactory.getLogger(CursoRepository.cla
 		
 		return cursos;
 	}
+	
+public List<Curso> consulta2(String nom){
+		
+		logger.info("call consulta2");
+		
+		String sql = "SELECT * FROM cursos WHERE nombre = ? ";
+		
+		List<Curso> datos = jdbcTemplate.query(sql, new RowMapper<Curso>(){
+			public Curso mapRow(ResultSet res, int rowNum) throws SQLException{
+				
+				Curso dato = new Curso();
+				dato.setId(res.getInt("id"));
+				dato.setNombre(res.getString("nombre"));
+				return dato;
+			}
+		},nom);
+		logger.info("datos: "+datos);
+		return datos;
+	}
 
 	
 

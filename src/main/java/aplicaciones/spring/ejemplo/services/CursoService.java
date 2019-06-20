@@ -10,6 +10,7 @@ import aplicaciones.spring.ejemplo.repository.CursoRepository;
 
 
 
+
 @Service
 public class CursoService {
 
@@ -21,5 +22,11 @@ public class CursoService {
 		return cursoRepository.listar();
 	}
 
+	public List<Curso> consulta2(String nom) throws Exception{
+		return cursoRepository.consulta2(nom);
+	}
 
+	
+
+	
 }
